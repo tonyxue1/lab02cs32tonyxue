@@ -3,6 +3,7 @@
 #include <cstring>
 
 Student::Student(const char * const name, int perm) {
+  this->name = nullptr; 
   this->setName(name);
   this->setPerm(perm);
 }
@@ -20,6 +21,9 @@ void Student::setPerm(const int permNumber) {
 }
 
 void Student::setName(const char * const name) {
+  if (this->name != nullptr) {
+    delete[] this->name;
+  }
   this->name = new char[strlen(name)+1];
   strcpy(this->name, name);
 }
